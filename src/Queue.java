@@ -120,6 +120,4 @@ public class Queue<E extends Comparable<E>> implements AbstractQueue<E> {
             System.out.print(" ");
         }
     }
-
-
 }

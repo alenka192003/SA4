@@ -39,21 +39,6 @@ public class MaxHeapVA<E extends Comparable<E>> implements Heap<E> {
         }
     }
 
-    public E poll() {
-        if (size() == 0) {return null;}
-
-        E maxElement = elements.get(0);
-        int lastIndex = size() - 1;
-
-        // Замена корня на последний элемент
-        elements.set(0, elements.get(lastIndex));
-        elements.remove(lastIndex);
-        // Восстановление свойств кучи
-        heapifyUp();
-        return maxElement;
-    }
-
-
     private void swap(int i, int j) {
         E temp = elements.get(i);
         elements.set(i, elements.get(j));
@@ -94,11 +79,9 @@ public class MaxHeapVA<E extends Comparable<E>> implements Heap<E> {
         }
     }
 
-    public void merge(MaxHeapVA<E> otherHeap) {
-        // Объединяем списки элементов без использования дополнительной памяти
-        elements.addAll(otherHeap.elements);
+    public void merge(MaxHeapVA<E> other) {
+        elements.addAll(other.elements);
 
-        // Применяем heapifyDown для каждого элемента, начиная с последнего добавленного элемента
         for (int i = size() - 1; i >= 0; i--) {
             heapifyDown(i, size());
         }
@@ -129,6 +112,4 @@ public class MaxHeapVA<E extends Comparable<E>> implements Heap<E> {
             }
         }
     }
-
-
 }

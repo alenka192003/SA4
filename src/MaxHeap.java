@@ -9,9 +9,7 @@ public class MaxHeap<E extends Comparable<E>> implements Heap<E> {
     }
 
     @Override
-    public int size() {
-        return size;
-    }
+    public int size() {return size;}
 
     @Override
     public void add(E element) {
@@ -22,27 +20,20 @@ public class MaxHeap<E extends Comparable<E>> implements Heap<E> {
 
     @Override
     public E peek() {
-        if (size == 0) {
-            return null;
-        }
+        if (size == 0) {return null;}
         return (E) elements[0];
     }
 
     public E poll() {
-        if (size == 0) {
-            return null;
-        }
+        if (size == 0) {return null;}
+        E max = (E) elements[0];
 
-        E maxElement = (E) elements[0];
-
-        // Перемещение последнего элемента в корень
+        // Последний элемент в корень
         elements[0] = elements[size - 1];
         size--;
 
-        // Восстановление свойств кучи
         heapifyDown(0);
-
-        return maxElement;
+        return max;
     }
 
     private void heapifyUp(int index) {
